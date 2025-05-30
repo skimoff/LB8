@@ -42,9 +42,8 @@ public class Suitcase
             throw new InvalidOperationException("Перевищено допустимий об'єм валізи!");
 
         Array.Resize(ref _items, _items.Length + 1);
-        _items[^1] = item;
+        _items[1] = item;
 
-        // Виклик події
         ItemAdded?.Invoke(item);
     }
 
