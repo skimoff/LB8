@@ -16,7 +16,6 @@ class Program
         showDate();
         showDay();
 
-        // === Predicate ===
         Predicate<int> isPrime = NumberUtilities.IsPrime;
         Predicate<int> isFibonacci = NumberUtilities.IsFibonacci;
 
@@ -24,7 +23,6 @@ class Program
         Console.WriteLine($"\n{number} — просте число? {isPrime(number)}");
         Console.WriteLine($"{number} — число Фібоначчі? {isFibonacci(number)}");
 
-        // === Func ===
         Func<double, double, double, double> triangleArea = GeometryUtilities.GetTriangleArea;
         Func<double, double, double> rectangleArea = GeometryUtilities.GetRectangleArea;
         Func<double, double, double> rectanglePerimeter = GeometryUtilities.GetRectanglePerimeter;
@@ -36,34 +34,24 @@ class Program
 
     static void Task2()
     {
-        // Створюємо валізу
         Suitcase suitcase = new Suitcase("Чорна", "Samsonite", 3.5, 30.0);
 
-        // Підписка на подію
         suitcase.ItemAdded += item =>
         {
             Console.WriteLine($"Додано об'єкт: {item.Name} (об'єм: {item.Volume} л)");
         };
 
-        // Створюємо предмети
         LuggageItem item1 = new LuggageItem("Фен", 5);
         LuggageItem item2 = new LuggageItem("Кросівки", 7);
         LuggageItem item3 = new LuggageItem("Ноутбук", 15);
         LuggageItem item4 = new LuggageItem("Книга", 10); // перевищить об'єм
 
-        try
-        {
+
             suitcase.AddItem(item1);
             suitcase.AddItem(item2);
             suitcase.AddItem(item3);
             suitcase.AddItem(item4); // тут буде виняток
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Помилка: {ex.Message}");
-        }
-
-        // Вивід вмісту
+    
         suitcase.ShowContents();
     }
 
